@@ -14,6 +14,7 @@ public interface Translator {
      * @param country the country
      * @return list of language codes which are available for this country
      */
+
     List<String> getCountryLanguages(String country);
 
     /**
