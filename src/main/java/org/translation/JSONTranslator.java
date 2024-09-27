@@ -4,12 +4,14 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.security.KeyException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 
 /**
  * An implementation of the Translator interface which reads in the translation
@@ -17,9 +19,7 @@ import org.json.JSONObject;
  */
 public class JSONTranslator implements Translator {
 
-    Map<String, Map<String, String>> countryInfoMap = new HashMap<>();
-    CountryCodeConverter countryConverter = new CountryCodeConverter();
-    LanguageCodeConverter langConverter = new LanguageCodeConverter();
+    private Map<String, Map<String, String>> countryInfoMap = new HashMap<>();
 
     /**
      * Constructs a JSONTranslator using data from the sample.json resources file.

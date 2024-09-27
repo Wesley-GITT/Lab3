@@ -6,7 +6,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -49,14 +48,10 @@ public class JSONTranslationExample {
      * @return the translation of country to the given language or "Country not found" if there is no translation.
      */
     public String getCountryNameTranslation(String countryCode, String languageCode) {
-        for (int i = 0; i < jsonArray.length(); i++){
+        for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObj = jsonArray.getJSONObject(i);
             if (countryCode.equals(jsonObj.getString("alpha3"))) {
-                try {
-                    return jsonObj.getString(languageCode);
-                } catch (JSONException e) {
-                    return "No translation to " + languageCode;
-                }
+                return jsonObj.getString(languageCode);
             }
         }
         return "Country not found";

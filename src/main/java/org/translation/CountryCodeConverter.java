@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.security.KeyException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,8 +13,8 @@ import java.util.Map;
  */
 public class CountryCodeConverter {
 
-    Map<String, String> codeToCountry = new HashMap<>();
-    Map<String, String> countryToCode = new HashMap<>();
+    private Map<String, String> codeToCountry = new HashMap<>();
+    private Map<String, String> countryToCode = new HashMap<>();
 
     /**
      * Default constructor which will load the country codes from "country-codes.txt"
@@ -38,7 +37,7 @@ public class CountryCodeConverter {
 
             for (int i = 1; i < lines.size(); i++) {
                 String line = lines.get(i);
-                String map[] = line.split("\t");
+                String[] map = line.split("\t");
                 codeToCountry.put(map[2], map[0]);
                 countryToCode.put(map[0], map[2]);
             }
@@ -54,11 +53,11 @@ public class CountryCodeConverter {
      * @return the name of the country corresponding to the code
      */
     public String fromCountryCode(String code) {
-        code = code.toUpperCase();
-        if (!codeToCountry.containsKey(code)) {
+        String c = code.toUpperCase();
+        if (!codeToCountry.containsKey(c)) {
             return "";
         }
-        return codeToCountry.get(code);
+        return codeToCountry.get(c);
     }
 
     /**

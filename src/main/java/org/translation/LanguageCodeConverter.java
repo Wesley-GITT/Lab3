@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.security.KeyException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,8 +13,8 @@ import java.util.Map;
  */
 public class LanguageCodeConverter {
 
-    Map<String, String> codeToLang = new HashMap<>();
-    Map<String, String> langToCode = new HashMap<>();
+    private Map<String, String> codeToLang = new HashMap<>();
+    private Map<String, String> langToCode = new HashMap<>();
 
     /**
      * Default constructor which will load the language codes from "language-codes.txt"
@@ -38,7 +37,7 @@ public class LanguageCodeConverter {
 
             for (int i = 1; i < lines.size(); i++) {
                 String line = lines.get(i);
-                String map[] = line.split("\t");
+                String[] map = line.split("\t");
                 codeToLang.put(map[1], map[0]);
                 langToCode.put(map[0], map[1]);
             }
